@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
   // JVM Runner
-  implementation("technology.idlab:jvm-runner:0.0.1")
+  implementation("technology.idlab:jvm-runner:0.0.2")
 
   // JUnit
   testImplementation(platform("org.junit:junit-bom:5.10.0"))

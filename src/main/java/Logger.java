@@ -1,12 +1,14 @@
 import technology.idlab.bridge.Reader;
 import technology.idlab.bridge.Writer;
 import technology.idlab.runner.Processor;
+import technology.idlab.runner.ProcessorDefinition;
 
 import java.util.Map;
 
 /**
  * Simple processor which logs the input data and passes it to the output.
  */
+@ProcessorDefinition(resource = "/logger.ttl")
 public class Logger extends Processor {
     private final Reader reader;
     private final Writer writer;

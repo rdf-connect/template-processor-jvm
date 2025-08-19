@@ -30,6 +30,7 @@ tasks.register("indexJar", Jar) {
 dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation libs.guava
+    implementation 'com.google.protobuf:protobuf-java:4.28.2'
 	implementation 'com.github.rdf-connect.jvm-runner:types:master-SNAPSHOT'
 }
 

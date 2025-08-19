@@ -1,0 +1,31 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix rdfc: <https://w3id.org/rdf-connect#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+rdfc:TestProcessor rdfc:javaImplementationOf rdfc:Processor;
+  rdfc:class "org.example.Library";
+  rdfc:jar <https://javadoc.jitpack.io/com/github/rdf-connect/jvm-runner/runner/main-SNAPSHOT/runner-main-SNAPSHOT-all.jar>.
+
+[ ] a sh:NodeShape;
+  sh:targetClass rdfc:TestProcessor;
+  sh:property [
+    sh:path rdfc:reader;
+    sh:name "reader";
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:class rdfc:Reader;
+  ], [
+    sh:path rdfc:writer;
+    sh:name "writer";
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:class rdfc:Writer;
+  ], [
+    sh:path rdfc:name;
+    sh:name "name";
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype xsd:string;
+  ].
+

@@ -4,6 +4,9 @@
 package org.example;
 
 import java.util.function.Consumer;
+
+import com.google.protobuf.ByteString;
+
 import io.github.rdfc.Processor;
 import io.github.rdfc.IReader;
 import io.github.rdfc.IWriter;
@@ -18,22 +21,21 @@ public class Library extends Processor<Library.Args> {
         return true;
     }
 
-    @Override
-    public void init(Consumer arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'init'");
+    public void init(Consumer<Void> callback) {
+        callback.accept(null);
     }
 
-    @Override
-    public void produce(Consumer arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'produce'");
+    public void transform(Consumer<Void> callback) {
+        this.arguments.reader.buffers().on(st -> st.ifPresentOrElse(msg -> {
+            System.out.println("Got string " + msg.toStringUtf8());
+        }, () -> {
+        }));
+
     }
 
-    @Override
-    public void transform(Consumer arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'transform'");
+    public void produce(Consumer<Void> callback) {
+        System.out.println("Producing");
+        this.arguments.writer.msg(ByteString.copyFromUtf8("Hallo " + this.arguments.name));
     }
 
     public static class Args {

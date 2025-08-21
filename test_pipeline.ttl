@@ -3,8 +3,9 @@
 @prefix rdfc: <https://w3id.org/rdf-connect#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 
-<> owl:imports <https://javadoc.jitpack.io/com/github/rdf-connect/template-processor-jvm/main-SNAPSHOT/template-processor-jvm-main-SNAPSHOT-index.jar>.
 <> owl:imports <https://javadoc.jitpack.io/com/github/rdf-connect/jvm-runner/runner/master-SNAPSHOT/runner-master-SNAPSHOT-index.jar>.
+<> owl:imports <https://javadoc.jitpack.io/com/github/rdf-connect/template-processor-jvm/main-SNAPSHOT/template-processor-jvm-main-SNAPSHOT-index.jar>.
+#
 <> a rdfc:Pipeline;
   rdfc:consistsOf [
     rdfc:instantiates rdfc:JvmRunner;

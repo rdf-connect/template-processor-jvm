@@ -4,6 +4,7 @@
 package org.example;
 
 import java.util.function.Consumer;
+import java.util.logging.Logger;
 
 import com.google.protobuf.ByteString;
 
@@ -13,8 +14,8 @@ import io.github.rdfc.IWriter;
 
 public class Library extends Processor<Library.Args> {
 
-    public Library(Args arguments) {
-        super(arguments);
+    public Library(Args arguments, Logger logger) {
+        super(arguments, logger);
     }
 
     public boolean someLibraryMethod() {

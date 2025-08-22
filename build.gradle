@@ -27,6 +27,13 @@ tasks.register("indexJar", Jar) {
     from("index.ttl")
 }
 
+tasks.named("shadowJar", Jar) {
+    // add descriptor.json from project root
+    from("index.ttl") {
+        into("") // root of jar
+    }
+}
+
 dependencies {
     implementation 'com.google.protobuf:protobuf-java:4.28.2'
 	implementation 'com.github.rdf-connect.jvm-runner:types:master-SNAPSHOT'
@@ -48,8 +55,11 @@ publishing {
         maven(MavenPublication) {
             // fat jar
             artifact(tasks.shadowJar)
-            // plain file
-            artifact(tasks.indexJar) 
         }
     }
 }
+
+build {
+    dependsOn shadowJar
+}
+

@@ -23,6 +23,7 @@ public class Library extends Processor<Library.Args> {
     }
 
     public void init(Consumer<Void> callback) {
+        this.logger.info("Done initing");
         callback.accept(null);
     }
 
@@ -30,13 +31,18 @@ public class Library extends Processor<Library.Args> {
         this.arguments.reader.buffers().on(st -> st.ifPresentOrElse(msg -> {
             System.out.println("Got string " + msg.toStringUtf8());
         }, () -> {
+            this.logger.info("Done transforming");
+            callback.accept(null);
         }));
-
     }
 
     public void produce(Consumer<Void> callback) {
         System.out.println("Producing");
         this.arguments.writer.msg(ByteString.copyFromUtf8("Hallo " + this.arguments.name));
+        this.arguments.writer.close();
+
+        this.logger.info("Done producing");
+        callback.accept(null);
     }
 
     public static class Args {

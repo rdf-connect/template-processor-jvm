@@ -5,7 +5,7 @@
 
 rdfc:TestProcessor rdfc:javaImplementationOf rdfc:Processor;
   rdfc:class "org.example.Library";
-  rdfc:jar <https://javadoc.jitpack.io/com/github/rdf-connect/template-processor-jvm/main-SNAPSHOT/template-processor-jvm-main-SNAPSHOT-all.jar>.
+  rdfc:jar <>.
 
 [ ] a sh:NodeShape;
   sh:targetClass rdfc:TestProcessor;
